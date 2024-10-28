@@ -8,30 +8,27 @@
     }
     return newDrivers
 } */
-function filter(collection, cb) {
-    const results = [];
-    for (const item of collection) {
-        if (cb(item)) {
-            console.log(item);
-            results.push(item);
-        }
-    }
-    return results;
-}
 
 function findMatching(drivers, name) {
-    return filter(drivers, function (n) {
-        return n.toLowerCase() === name.toLowerCase()
-    })
-}
+    return drivers.filter(driver => driver.toLowerCase() === name.toLowerCase())
+   /*  const matching = []
+    drivers.forEach(driver => {
+        if (driver.toLowerCase() === name.toLowerCase() ){
+            matching.push(driver)
+        }
+    return matching   */
+ }
+
+        /*     return filter(drivers, (n) => {
+                return n.toLowerCase() === name.toLowerCase()
+            })
+        } */
 
 function fuzzyMatch(drivers, name) {
-    return filter(drivers, function (n) {
-        return n.charAt(0) === name.charAt(0)
-    })
+    return drivers.filter(driver => driver.charAt(0) === name.charAt(0)) 
 }
 
 function matchName(drivers, nameToMatch) {
     return drivers.filter(driver => driver.name === nameToMatch); 
-  } 
+} 
 
